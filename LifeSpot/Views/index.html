@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LifeSpot</title>
+    <!--Подключение стилей по отностиельному пути из внешнего файла-->
+    <link href="../Static/CSS/index.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../Static/JS/index.js"></script>
+</head>
+    
+    <!--Хедер страницы находится над тегом body-->
+<header id="header-index">
+    <!--Заголовок страницы-->
+    <h1>LifeSpot - прямые трансляции с улиц</h1>
+    <!--Параграф-->
+    <p>Покажем, что происходит прямо сейчас</p>
+
+    <input type="text" oninput="
+           // Получим все контейнеры с видео
+           let elements=document.getElementsByClassName('video-container');
+           let inputElements=document.getElementsByTagName('input');
+           // Получим первый элемент DOM в коллекции
+           let element=inputElements[0]; // Получим строковое значение
+           let elementText=element.value;
+           // Пробежимся в цикле и выведем все в консоль
+           for (let i=0; i <= elements.length; i++ ){
+    // Получим всё что внутри контейнера
+    let childElements = elements[i];
+    // Получим элемент, содержащий описание видео
+    // Он у нас единственный с тегом h3, снова воспользуемся поиском по тегу,
+    let videoDescription = childElements.getElementsByTagName('h3')[0];
+    // Выведем его текст на консоль
+    if(!videoDescription.innerText.toLowerCase().includes(elementText.toLowerCase())){
+    elements[i].style.display = 'none';
+
+    }
+    else {elements[i].style.display = 'inline-block';}
+    }" size=50%>
+
+</header>
+    
+    <!--Сайд-бар страницы (пока все ссылки ведут на главную)-->
+    <aside id="sidebar">
+        <div class="navbar">
+            <a href="/"><p>Все трансляции</p></a>
+            <a href="/"><p>О проекте</p></a>
+            <a href="/testing"><p>Тестирование</p></a>
+        </div>
+    </aside>
+    
+    <body>
+        <div class="bordered">
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/srlpC5tmhYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h3>Нью-Йорк, Брайант Парк</h3>
+            </div>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/wCcMcaiRbhM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h3>Санкт-Петербург, Невский Проспект</h3>
+            </div>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/muVgPUnU7qA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h3>Лондон, автобусный маршрут</h3>
+            </div>
+        </div>
+    </body>
+    
+    <!--Футер страницы находится под основной частью (body)-->
+    <footer>
+        <p>LifeSpot - видео трансляции</p>
+        <p>Связь с разработчиком: evmorgunov@yahoo.com</p>
+    </footer>
+</html>
